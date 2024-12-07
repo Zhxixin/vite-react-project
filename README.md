@@ -1,2 +1,2 @@
 # react.demo
-react 练习代码
+react+typescrip+vite
