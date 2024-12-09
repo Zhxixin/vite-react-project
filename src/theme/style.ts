@@ -63,6 +63,8 @@ export const SummarySection = styled.div`
     padding: 1.25rem;
     max-width: 25rem;
     flex: 1;
+    margin: auto;
+    width: -webkit-fill-available;
     h2{
         margin: 0 auto 0 0;
         padding-bottom:0.625rem;
