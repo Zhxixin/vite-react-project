@@ -17,15 +17,7 @@ export const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div
-      style={{
-        backgroundColor: theme === 'light' ? '#fff' : '#333',
-        color: theme === 'light' ? '#000' : '#fff',
-        padding: '20px',
-        textAlign: 'center',
-      }}
-    >
-      <p>当前主题是: {theme}</p>
+    <div>
       <button onClick={toggleTheme} className={theme}>
         切换到 {theme === 'light' ? '暗色' : '亮色'} 模式
       </button>
