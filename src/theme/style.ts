@@ -48,6 +48,7 @@ export const ScoreCircle = styled.div`
     display: flex;
     flex-direction: column;
     font-size:1rem;
+    margin:auto;
     background: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
   
     span:first-child {
