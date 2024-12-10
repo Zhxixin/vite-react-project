@@ -1,10 +1,10 @@
-import { Container, ResultCard, ScoreCircle, SummarySection, SummaryItem, Button } from './../theme/style.ts';
-import data from './../config/data.json';
+import { Container, ResultCard, ScoreCircle, SummarySection, SummaryItem, Button } from '../theme/results_summary_style.ts';
+import data from '../config/results_summary_data.json';
 import { SummaryItemData } from '../util/types.ts';
-const icons: Record<string, { default: string }> = import.meta.glob('../assets/icons/*.svg', { eager: true });
+const icons: Record<string, { default: string }> = import.meta.glob('../assets/images/results_summary/*.svg', { eager: true });
 let scoreRank: number = 65;
 
-export const ScorePage: React.FC = () => {
+export const ResultsSummary: React.FC = () => {
     return <Container>
         <ResultCard>
             <h2>Your Result</h2>
@@ -18,8 +18,8 @@ export const ScorePage: React.FC = () => {
         <SummarySection>
             <h2>Summary</h2>
             {data.map((item: SummaryItemData) => {
-                const iconPath = (icons[`../assets/icons/${item.icon}`] as { default: string }).default;
-
+                console.log('iconPath', icons);
+                const iconPath = (icons[`../assets/images/results_summary/${item.icon}`] as { default: string }).default;
                 return (
                     <SummaryItem key={item.category} color={item.color}>
                         <div>
