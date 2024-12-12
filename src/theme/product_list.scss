@@ -1,0 +1,52 @@
+.product-list-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: hsl(62, 58%, 89%);
+
+    .product-list {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+        justify-content: center;
+        align-items: center;
+
+        .product-card {
+            text-align: center;
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 0.625rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    .cart-container {
+        background-color: white;
+        border-radius: 0.5rem;
+        max-height: 18.75rem;
+        text-align: left;
+        padding: .625rem;
+
+    }
+
+    .add-card-button {
+        background-color: rgb(146, 12, 12);
+        color: white;
+        border-radius: 0.5rem;
+        padding: 0.625rem;
+        border: none;
+        cursor: pointer;
+
+        button {
+            background-color: white;
+            border: none;
+        }
+    }
+
+    @media screen and (min-width:375px) {
+        flex-direction: row;
+    }
+}

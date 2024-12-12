@@ -22,3 +22,22 @@ export interface SummaryItemData {
     icon: string;
     color: string;
 }
+
+export interface ProductItemData {
+    price: number;
+    name: string;
+    category: string;
+    productId: string;
+    selectQuantity?: number | null;
+    image: {
+        thumbnail: string;
+        mobile: string;
+        tablet: string;
+        desktop: string;
+    };
+}
+
+export interface ProductContextType {
+    products: ProductItemData[];
+    addOrDeleteToCart: (item: ProductItemData, isAdd: boolean) => void;
+}
