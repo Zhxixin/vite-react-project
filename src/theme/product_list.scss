@@ -8,9 +8,10 @@
     .product-list {
         display: grid;
         gap: 1.25rem;
-        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+        grid-template-columns: repeat(1, minmax(12.5rem, 1fr));
         justify-content: center;
         align-items: center;
+        flex: 3;
 
         .product-card {
             text-align: center;
@@ -29,24 +30,90 @@
         max-height: 18.75rem;
         text-align: left;
         padding: .625rem;
+        flex: 1;
 
     }
 
     .add-card-button {
-        background-color: rgb(146, 12, 12);
-        color: white;
-        border-radius: 0.5rem;
-        padding: 0.625rem;
-        border: none;
-        cursor: pointer;
+        position: relative;
+        bottom: 1.875rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
 
-        button {
-            background-color: white;
-            border: none;
+
+        // Add to Cart button styles
+        .add-to-cart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #d04227;
+            border: 2px solid #d04227;
+            border-radius: 3.125rem;
+            padding: 1rem 1.25rem;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            .icon {
+                margin-right: 8px;
+                font-size: 16px;
+            }
+
+            &:hover {
+                background-color: #d04227;
+                color: #fff;
+            }
+        }
+
+        // Quantity control styles
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background-color: #d04227;
+            border-radius: 20px;
+            padding: .5rem .625rem;
+            gap: 8px;
+
+            .quantity-button {
+                background-color: transparent;
+                color: #fff;
+                border: none;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+            }
+
+            .quantity {
+                color: #fff;
+                font-size: 16px;
+                font-weight: bold;
+                width: 24px;
+                text-align: center;
+            }
+        }
+
+    }
+
+    @media screen and (min-width:768px) {
+        flex-direction: row;
+
+        .product-list {
+            grid-template-columns: repeat(3, minmax(12.5rem, 1fr));
         }
     }
 
-    @media screen and (min-width:375px) {
-        flex-direction: row;
-    }
+
 }
