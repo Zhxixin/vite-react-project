@@ -15,7 +15,7 @@ export const ShoppingCartCard: React.FC = () => {
             {addCardList.map(item => <CartItem key={item.productId} product={item} />)}
             <TotalPrice />
             <div className="tip-container"><img src={tipIcon} alt="tip"></img><span>This is a carbon-neutral delivery</span></div>
-            <button>Confirm Order</button>
+            <button className="comfirm-order">Confirm Order</button>
         </div>
     )
 }
@@ -25,7 +25,7 @@ export const CartItem = (props: { product: ProductItemData }) => {
         <div className="cart-item-container">
             <div className="cart-item">
                 <div className="cart-item-title">{props.product.name}</div>
-                <div className="cart-item-price">{props.product.price}</div>
+                <div className="cart-item-price">${props.product.price}</div>
             </div>
             <button className="delete"><img src={deleteIcon} alt="delete" /></button>
         </div>
@@ -35,9 +35,9 @@ export const CartItem = (props: { product: ProductItemData }) => {
 
 export const TotalPrice: React.FC = () => {
     return (
-        <div>
+        <div className="total-price-container">
             <div>Order Total</div>
-            <div>$46.5</div>
+            <div className="price">$46.5</div>
         </div>
     )
 }
