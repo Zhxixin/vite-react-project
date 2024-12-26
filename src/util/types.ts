@@ -39,5 +39,7 @@ export interface ProductItemData {
 
 export interface ProductContextType {
     products: ProductItemData[];
-    addOrDeleteToCart: (item: ProductItemData, isAdd: boolean) => void;
+    addOrDeleteToCart: (item: ProductItemData, action: Action) => void;
 }
+
+export type Action = 'increment' | 'decrement' | 'remove';
