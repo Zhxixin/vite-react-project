@@ -23,7 +23,7 @@ export interface SummaryItemData {
     color: string;
 }
 
-export interface ProductItemData {
+export interface ProductEntity {
     price: number;
     name: string;
     category: string;
@@ -38,8 +38,8 @@ export interface ProductItemData {
 }
 
 export interface ProductContextType {
-    products: ProductItemData[];
-    addOrDeleteToCart: (item: ProductItemData, action: Action) => void;
+    products: ProductEntity[];
+    addOrDeleteToCart: (item: ProductEntity, action: Action) => void;
 }
 
 export type Action = 'increment' | 'decrement' | 'remove';

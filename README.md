@@ -1,5 +1,10 @@
 # React + TypeScript + Vite
 
+1.node 版本 20+
+2.npm install -D sass-embedded 
+3.npm install（如果运行 sass-embedded 有报错，执行 npm install sass-embedded-darwin-x64，无报错请忽略）
+4.npx vite 运行
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

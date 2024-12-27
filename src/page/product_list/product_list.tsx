@@ -1,37 +1,41 @@
 
-import { ProductItemData } from "./../../util/types.ts";
-import { useProducts } from "./product_list_with_card.tsx";
+import { ProductEntity } from "./../../util/types.ts";
 import addCartIcon from './../../assets/images/product_list/icon-add-to-cart.svg';
 import { useEffect, useReducer } from "react";
 import { priceFormat } from "../../util/common.ts";
+import { useProducts } from "../../util/context.ts";
 
 const allImage = import.meta.glob('../../assets/images/product_list/*.jpg', { eager: true });
 
 export const ProductList: React.FC = () => {
     const { products } = useProducts();
-    console.log('ProductList', products);
+    // console.log('ProductList', products);
+
     return (
-        <div className="product-list">
-            {products.map((item: ProductItemData) => {
+        <div className="product-list-container">
+            <div className="title">Desserts</div>
+            <div className="product-list">
+                {products.map((item: ProductEntity) => {
 
-                const image = (allImage[`../../assets/images/product_list/${item.image.desktop}`] as { default: string }).default;
+                    const image = (allImage[`../../assets/images/product_list/${item.image.desktop}`] as { default: string }).default;
 
-                return (<div className="product-card" key={item.productId}>
-                    <img src={image} alt={item.name} className={`${(item.selectQuantity ?? 0) > 0 ? 'red-border' : ''}`} /> {/*  */}
-                    <AddCart item={item}></AddCart>
+                    return (<div className="product-card" key={item.productId}>
+                        <img src={image} alt={item.name} className={`${(item.selectQuantity ?? 0) > 0 ? 'red-border' : ''}`} /> {/*  */}
+                        <AddCart item={item}></AddCart>
 
-                    <div className="category">{item.category}</div>
-                    <div className="name">{item.name}</div>
-                    <div className="price">{`$ ${priceFormat(item.price)}`}</div>
+                        <div className="category">{item.category}</div>
+                        <div className="name">{item.name}</div>
+                        <div className="price">{`$ ${priceFormat(item.price)}`}</div>
 
 
-                </div>)
-            })}
+                    </div>)
+                })}
+            </div>
         </div>
     )
 }
 
-export const AddCart = (props: { item: ProductItemData }) => {
+export const AddCart = (props: { item: ProductEntity }) => {
     const { addOrDeleteToCart } = useProducts();
     console.log('addOrDeleteToCart', props.item.selectQuantity);
 
@@ -57,11 +61,7 @@ export const AddCart = (props: { item: ProductItemData }) => {
                     <img src={addCartIcon} alt="addCart" />
                     Add to Cart
                 </button>
-
-
         }
-
-
     </div>
 }
 
