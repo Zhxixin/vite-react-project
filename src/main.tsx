@@ -4,8 +4,8 @@ import './index.css'
 import App from './App.tsx'
 import { debounceSetRem, setRem } from './util/rem.ts';
 
-setRem();
-window.addEventListener('resize', () => debounceSetRem);
+setRem({});
+// window.addEventListener('resize', () => { debounceSetRem({ baseSize: 16 }); });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

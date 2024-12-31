@@ -12,14 +12,24 @@ $base-color-rose-900: #260f08;
 $base-font-size: 1rem;
 
 .product-container {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     height: 100%;
     display: flex;
+    width: 100%;
+    box-sizing: border-box;
+
     justify-content: space-around;
     flex-direction: column;
     background-color: $base-color-rose-100;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 1.625rem;
+    padding: 1rem;
+    margin: 0 auto;
+
+    &::-webkit-scrollbar {
+        scrollbar-color: transparent transparent;
+        scrollbar-width: none;
+    }
 
     .product-list-container {
 
@@ -27,13 +37,14 @@ $base-font-size: 1rem;
             font-size: 1.875rem;
             color: $base-color-rose-900;
             text-align: start;
-            font-weight: 500;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
         }
 
         .product-list {
             display: grid;
             gap: 1rem;
-            grid-template-columns: repeat(1, minmax(12.5rem, 1fr));
+            grid-template-columns: repeat(1, minmax(10rem, 30rem));
             justify-content: space-around;
             align-items: stretch;
             flex: 3;
@@ -41,8 +52,6 @@ $base-font-size: 1rem;
 
             .product-card {
                 text-align: left;
-                border-radius: 0.5rem;
-                // padding: 1.25rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -53,7 +62,7 @@ $base-font-size: 1rem;
                 transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
                 img {
-                    border-radius: .625rem;
+                    border-radius: .25rem;
                     outline: none;
 
                     &.red-border {
@@ -83,26 +92,24 @@ $base-font-size: 1rem;
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-                font-size: 1rem;
+                // font-size: .75rem;
 
                 .add-to-cart {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     background-color: #fff;
-                    color: $base-color-red;
+                    color: black;
                     border: 2px solid $base-color-red;
                     border-radius: 3.125rem;
-                    padding: .375rem 1rem;
-                    font-size: 1rem;
-                    font-weight: bold;
+                    padding: 0 0.5rem;
                     cursor: pointer;
                     transition: all 0.3s ease;
-                    width: 9rem;
+                    width: 9.6rem;
                     height: 2.5rem;
 
-                    .icon {
-                        margin-right: 8px;
+                    img {
+                        margin-right: 0.25rem;
                     }
 
                     &:hover {
@@ -118,20 +125,17 @@ $base-font-size: 1rem;
                     background-color: $base-color-red;
                     border-radius: 1.25rem;
                     padding: 0;
-                    width: 9rem;
+                    width: 9.6rem;
                     height: 2.5rem;
-                    gap: 1rem;
 
                     .quantity-button {
                         background-color: transparent;
                         color: #fff;
                         border: .0625rem solid #fff;
-                        font-size: 1.125rem;
-                        font-weight: bold;
                         cursor: pointer;
-                        width: 1.25rem;
-                        height: 1.25rem;
-                        border-radius: 1.25rem;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border-radius: 1.5rem;
                         display: flex;
                         align-items: center;
                         justify-content: space-around;
@@ -143,17 +147,15 @@ $base-font-size: 1rem;
                         &:hover {
                             background-color: #fff;
                             color: $base-color-red;
-                            border: .0625rem solid $base-color-red;
+                            border: 1px solid $base-color-red;
                         }
                     }
 
 
                     .quantity {
                         color: #fff;
-                        font-weight: bold;
                         text-align: center;
                         flex: 1;
-                        // max-width: 6.25rem;
                     }
                 }
 
@@ -296,7 +298,8 @@ $base-font-size: 1rem;
             border-top-left-radius: 1.25rem;
             border-top-right-radius: 1.25rem;
             max-width: 100%;
-            padding: 1rem;
+
+            padding: 1.5rem;
             text-align: start;
             position: fixed;
             bottom: 0;
@@ -309,7 +312,7 @@ $base-font-size: 1rem;
             .title {
                 color: $base-color-rose-900;
                 font-size: 2.25rem;
-                font-weight: 900;
+                font-weight: 700;
             }
 
             .remark {
@@ -424,12 +427,25 @@ $base-font-size: 1rem;
 
     @media screen and (min-width:768px) {
         flex-direction: row;
+        padding: 3.125rem;
 
         .product-list-container {
             flex: 2;
 
             .product-list {
-                grid-template-columns: repeat(2, minmax(12.5rem, 1fr));
+                gap: 1rem;
+                grid-template-columns: repeat(3, minmax(10rem, 1fr));
+
+                .add-card-button {
+
+                    .add-to-cart,
+                    .quantity-control {
+                        width: 8rem;
+                        height: 2rem;
+                        font-size: .875rem;
+                    }
+
+                }
             }
         }
 
@@ -445,27 +461,25 @@ $base-font-size: 1rem;
                 border-radius: 1.25rem;
                 top: 0;
                 max-width: 22.5rem;
-                max-height: 31.25rem;
+                max-height: max-content;
                 margin: auto;
-                // width: 18.75rem;
             }
         }
     }
 
     @media screen and (min-width:1024px) {
-        padding: 3.125rem;
 
-        .product-list-container {
-            flex: 3;
+        // .product-list-container {
+        //     flex: 3;
 
-            .product-list {
-                grid-template-columns: repeat(3, minmax(12.5rem, 1fr));
-                gap: 2.25rem;
-            }
-        }
+        //     .product-list {
+        //         grid-template-columns: repeat(3, minmax(10rem, 1fr));
+        //         gap: 1rem;
+        //     }
+        // }
 
         .cart-container {
-            margin-left: 2.25rem;
+            margin-left: 1.25rem;
         }
 
     }

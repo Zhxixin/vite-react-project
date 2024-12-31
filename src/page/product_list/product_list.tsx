@@ -4,6 +4,7 @@ import addCartIcon from './../../assets/images/product_list/icon-add-to-cart.svg
 import { useEffect, useReducer, useState } from "react";
 import { priceFormat } from "../../util/common.ts";
 import { useProducts } from "../../util/context.ts";
+import { setRem } from "../../util/rem.ts";
 
 const allImage = import.meta.glob('./../../assets/images/product_list/*.jpg', { eager: true });
 
@@ -14,8 +15,15 @@ export const ProductList: React.FC = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsDesktop(window.innerWidth > 768);
+            console.log('handleResize', window.innerWidth);
+            setIsDesktop(window.innerWidth >= 768);
+            if (window.innerWidth < 768) {
+                setRem({ baseSize: 18, scaleNum: 1.5 });
+            } else {
+                setRem({ baseSize: 16, scaleNum: 1 });
+            }
         }
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);

@@ -1,15 +1,20 @@
 
-export function setRem(baseSize: number = 18, designWidth: number = 375): void {
+export function setRem({ baseSize = 18, designWidth = 375, scaleNum = 1 }: { baseSize?: number; designWidth?: number; scaleNum?: number; }): void {
     const scale = document.documentElement.clientWidth / designWidth; // 设计稿宽度为375px
-    document.documentElement.style.fontSize = `${baseSize * Math.min(scale, 1)}px`;
+    const fontSize = baseSize * Math.min(scale, scaleNum);
+
+    const clampedFontSize = Math.max(14, fontSize);
+    document.documentElement.style.fontSize = `${clampedFontSize}px`;
 }
 
 let resizeTimer: NodeJS.Timeout | null = null;
 // 防抖版本的 setRem 函数
-export function debounceSetRem(baseSize: number = 18, designWidth: number = 375, delay: number = 100): void {
+export function debounceSetRem({ baseSize = 18, designWidth = 375, scaleNum = 1, delay = 100 }: {
+    baseSize?: number; designWidth?: number; delay?: number; scaleNum?: number;
+}): void {
     if (resizeTimer) {
         clearTimeout(resizeTimer);
     }
-    resizeTimer = setTimeout(() => { setRem(baseSize, designWidth) }, delay);
+    resizeTimer = setTimeout(() => { setRem({ baseSize, designWidth, scaleNum }) }, delay);
 }
 
